@@ -1,0 +1,82 @@
+{
+  "name": "pdf-edit",
+  "description": "Lightweight pdf editor",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/electron.js",
+  "homepage": "./",
+  "author": {
+    "name": "Ruben Giannotti",
+    "email": "ruben.giannotti@gmx.net",
+    "url": "http://rubengiannotti.com"
+  },
+  "build": {
+    "appId": "com.rubengiannotti.pdf-edit",
+    "productName": "PDF Edit",
+    "copyright": "Copyright © 2020 ${author}",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.49",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "electron-is-dev": "^1.2.0",
+    "pdf-lib": "^1.4.1",
+    "pdfjs-dist": "^2.3.200",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-beautiful-dnd": "^13.0.0",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.0"
+  },
+  "scripts": {
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"set BROWSER=none&&npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "npm run build",
+    "electron-pack": "electron-builder"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "0.0.14",
+    "@rescripts/rescript-env": "0.0.12",
+    "concurrently": "^5.1.0",
+    "electron": "^8.2.1",
+    "electron-builder": "^22.4.1",
+    "typescript": "^3.8.3",
+    "wait-on": "^4.0.2"
+  },
+  "rescripts": [
+    "env"
+  ]
+}
