@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { splitFileList } from '../../lib/parsers';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -6,6 +6,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { Button } from '../../theme/buttons';
 import { Input } from '../../theme/forms';
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
+import AddIcon from '@material-ui/icons/Add';
 import ClearIcon from '@material-ui/icons/Clear';
 
 const electron = window.require('electron');
@@ -52,7 +53,7 @@ function PickFileMulti({ paths, onLoad }) {
     });
 
     if(response) {
-      onLoad(response);
+      onLoad([...paths, ...response]);
     }
   }
 
@@ -66,7 +67,12 @@ function PickFileMulti({ paths, onLoad }) {
     <Grid>
       <CellPick>
         <Button theme="primary" height="100%" onClick={handlePick}>
-          <InsertDriveFileIcon /> Pick files
+          {paths.length > 0 ?
+            <Fragment><AddIcon /> Add more</Fragment>
+            :
+            <Fragment><InsertDriveFileIcon /> Pick</Fragment>
+          }
+          files
         </Button>
       </CellPick>
       <CellSelect>
